@@ -20,7 +20,7 @@ jobs:
         run: | 
           agvtool new-version -all $(git rev-parse HEAD)
           sed -i '' 's/Release/Debug/g' Makefile
-          make iphoneos
+          make
           mkdir upload
           mv packages/* upload/
 
