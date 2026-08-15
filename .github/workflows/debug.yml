@@ -19,7 +19,8 @@ jobs:
       - name: Compile Feather
         run: | 
           agvtool new-version -all $(git rev-parse HEAD)
-          make DEBUG=1 CONFIGURATION=Debug
+          sed -i '' 's/Release/Debug/g' Makefile
+          make
           mkdir upload
           mv packages/* upload/
 
