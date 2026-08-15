@@ -45,6 +45,8 @@ $(PLATFORMS): deps
 	mkdir -p _build/Payload
 	cp -R _build/Applications/*.app _build/Payload/Feather.app
 	chmod -R 0755 _build/Payload/Feather.app
+	#fix catalyst signing error
+	codesign --force --sign - --timestamp=none _build/Payload/Feather.app/Contents/MacOS/*.dylib || true
 	codesign --force --sign - --timestamp=none _build/Payload/Feather.app
 	cp deps/* _build/Payload/Feather.app/ || true
 
